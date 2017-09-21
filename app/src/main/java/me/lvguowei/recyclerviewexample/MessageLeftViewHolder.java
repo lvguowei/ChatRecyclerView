@@ -12,17 +12,10 @@ class MessageLeftViewHolder extends BaseViewHolder {
 
     OnClickListener listener;
 
-    MessageLeftViewHolder(View itemView, OnClickListener listener) {
+    MessageLeftViewHolder(View itemView, final OnClickListener listener) {
         super(itemView);
         messageTextView = itemView.findViewById(R.id.message_text);
         this.listener = listener;
-    }
-
-    @Override
-    void bindItem(MessageItem item) {
-        MessageLeftItem messageItem = (MessageLeftItem) item;
-
-        messageTextView.setText(messageItem.getMessage());
 
         messageTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,5 +28,11 @@ class MessageLeftViewHolder extends BaseViewHolder {
                 }
             }
         });
+    }
+
+    @Override
+    void bindItem(MessageItem item) {
+        MessageLeftItem messageItem = (MessageLeftItem) item;
+        messageTextView.setText(messageItem.getMessage());
     }
 }
